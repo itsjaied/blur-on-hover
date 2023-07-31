@@ -1,0 +1,80 @@
+/* center the .imgBox section vertically and horizontally*/
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: aliceblue;
+}
+
+/* Gap among the boxes using flex */
+.imgBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* .box reltaive for absolute overlay, also fixed height and weight*/
+.imgBox .box {
+  position: relative;
+  height: 150px;
+  width: 300px;
+  transition: 0.5s;
+}
+
+/* set the bg using other class of .box */
+.imgBox .p1 {
+  background: url('../images/p1.png') no-repeat center;
+  background-size: cover;
+}
+
+.imgBox .p2 {
+  background: url('../images/p2.png') no-repeat center;
+  background-size: cover;
+}
+
+.imgBox .p3 {
+  background: url('../images/p3.png') no-repeat center;
+  background-size: cover;
+}
+
+.imgBox .p4 {
+  background: url('../images/p4.png') no-repeat center;
+  background-size: cover;
+}
+
+/* other element don't move due to transform scale */
+.imgBox .box:hover {
+  transform: scale(1.1, 1.1);
+}
+
+/* visibility hidden , center span vertically and horizontally*/
+.imgBox .box .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgBox .box:hover .overlay {
+  visibility: visible;
+}
+
+.imgBox .box .overlay span {
+  position: absolute;
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* note* use of transform here*/
+.imgBox:hover .box:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
